@@ -88,7 +88,6 @@ def hatsune_miku():
 			resposta_ia = await asyncio.to_thread(chamada_toque, musica)
 		except Exception as e:
 			print(f"Ocorreu um erro ao gerar a resposta da IA: {e}")
-			# Não paramos a execução, apenas definimos uma resposta padrão.
 			resposta_ia = "Não consegui pensar em uma resposta agora, mas aqui está sua música! 😥"
 			print("DIAGNÓSTICO: IA respondeu.")
 
@@ -113,7 +112,6 @@ def hatsune_miku():
 
 	@bot.command(name="fila")
 	async def fila(ctx: commands.Context):
-		# 1. Verifica se a fila está vazia
 		if not queue:
 			embed_vazia = discord.Embed(
 				description="A fila de músicas está vazia! Adicione uma com `miku toque <nome da música>`.",
@@ -126,7 +124,7 @@ def hatsune_miku():
 		for idx, musica in enumerate(queue):
 			lista_musicas += f"**{idx + 1}.** {musica['title']}\n"
 
-		# 3. Cria um "Embed" para uma mensagem mais bonita
+
 		embed_fila = discord.Embed(
 			title="🎶 Fila de Músicas",
 			description=lista_musicas,
@@ -134,7 +132,6 @@ def hatsune_miku():
 		)
 		embed_fila.set_footer(text=f"{len(queue)} músicas na fila.")
 
-		# 4. Envia o embed formatado
 		await ctx.send(embed=embed_fila)
 
 
@@ -148,10 +145,6 @@ def hatsune_miku():
 		
 		else:
 			await ctx.replay("Não estou nessa call")
-
-
-
-
 
 
 	bot.run(f'{TOKEN}') 
