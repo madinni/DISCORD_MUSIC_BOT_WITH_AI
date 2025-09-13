@@ -15,7 +15,6 @@ def hatsune_miku():
 	FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5','options': '-vn'}
 	YDL_OPTIONS = {"format": "bestaudio/best", "noplaylist": True}
 	queue = []
-	ytdl = yt_dlp.YoutubeDL(YDL_OPTIONS)
 
 	intents = discord.Intents.all()
 	bot = commands.Bot("miku ", intents=intents)
